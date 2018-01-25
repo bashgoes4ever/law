@@ -1,0 +1,76 @@
+{% load static %}
+{% include 'site/head.html' %}
+	<nav>
+		<div class="container">
+			<ul class="navigation">
+				<li class="a1"><a href="/#services">Наши услуги</a></li>
+				<li class="a2"><a href="/#prices">Цены</a></li>
+				<li><a href="">Полезные статьи</a></li>
+				<li class="a3"><a href="/#replies">Отзывы</a></li>
+				<li class="active-nav"><a href="/about">О компании</a></li>
+				<li><a href="/contacts">Контакты	</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section class="about">
+		<div class="container">
+			<h2>О нашей <b>компании</b></h2>
+			<div class="line"></div>
+			<p>Компания СпецЮст предоставляет юридические услуги в сфере недвижимости и решения земельных вопросов, гражданского и арбитражного судопроизводства, а также в сфере архитектурного проектирования. К нам обращаютя частные и юридические лица. <br><br>Наша компания находится на рынке более 5 лет, за это время мы выйграли свыше 1380 дел, помогли более 750 предпринимателям и выполниле свыше 900 проектов различной сложности. <br><br>Данный опыт позволил выработать системность решения поступающих проблем наших клиентов. В нашей работе задействованы узкопрофильные специалисты, что позволяет добиться максимально эффективного результата в заданные сроки.  </p>
+		</div>
+	</section>
+	<section class="dark-bg stuff">
+		<div class="stuff-bg"><img src="{% static 'img/stuff-bg.png' %}" alt=""/></div>
+		<div class="container">
+			<h2>В нашей компании работают <b>узконаправленные специалисты</b> для каждой конкретной ситуации</h2>
+			<div class="line"></div>
+			<p class="descriptor">Опыт работы каждого нашего специалиста в своем сегменте более 5 лет. <br>Наша команда выигрывает ежегодно свыше 270 дел. За последние 2 года наша статистика показывает удельный вес выйграных дел в 93%</p>
+			<div class="stuff-block clearfix">
+				<div class="stuff-menu">
+                    {% for stuff_item in stuff %}
+					<div class="stuff-tab">
+						<div class="stuff-tab-img"><img src="{{ stuff_item.img.url }}" alt=""/></div>
+						<p><b>{{ stuff_item.stuff.name }}</b> <br>{{ stuff_item.stuff.job }}</p>
+					</div>
+                    {% endfor %}
+				</div>
+				<div class="stuff-items owl-carousel">
+                    {% for stuff_item in stuff %}
+					<div class="stuff-item">
+						<div class="stuff-item-img"><img src="{{ stuff_item.img.url }}" alt=""/></div>
+						<p class="name">{{ stuff_item.stuff.name }}</p>
+						<div class="line-1"></div>
+						<p class="job">{{ stuff_item.stuff.job }}</p>
+						<div class="line-2"></div>
+						<div class="stuff-flex">
+							<p>{{ stuff_item.stuff.e1|safe }}</p>
+							<p>{{ stuff_item.stuff.e2|safe }}</p>
+							<p>{{ stuff_item.stuff.e3|safe }}</p>
+						</div>
+						<div class="line-2"></div>
+						<p class="say">{{ stuff_item.stuff.text|safe }}</p>
+					</div>
+                    {% endfor %}
+				</div>
+			</div>
+			<p class="descriptor-2">   Вы всегда можете рассчитывать на подробную консультацию от наших специалистов. <br>Мы обладаем профессиональными знаниями и огромным опытом в сфере предоставляемых нами услуг. Подробно расскажем обо всех тонкостях судебного процесса и решения споров.</p>
+		</div>
+	</section>
+	<section class="work">
+		<div class="container">
+			<h2>Как мы оптимизировали <b>рабочий процесс</b></h2>
+			<div class="line"></div>
+			<div class="work-flex">
+				<div class="work-item">
+					<p>К нам поступает большой поток клиентов по одним и тем же вопросам с аналогичными ситуациями. Благодаря этому мы вырыботали определенную систему, которая позволяет ускорить решение поступивших проблем клиентов и экономить их финансовые затраты</p>
+				</div>
+				<div class="work-item">
+					<p>Для каждого клиента мы назначаем компетентного специалиста по решению его проблемы. В случае, если задача многостороннего характера, то подключаются дополнительные специалисты  </p>
+				</div>
+				<div class="work-item">
+					<p>Мы подключили в работу только проверенных временем и постоянным взаимодействием нотариусов, с ними ведется налаженный процесс подачи и обработки заявок в режиме Online, что экономит время подготовки к сделкам  </p>
+				</div>
+			</div>
+		</div>
+	</section>
+{% include 'site/footer.html' %}

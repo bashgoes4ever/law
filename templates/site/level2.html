@@ -1,0 +1,58 @@
+{% load static %}
+{% include 'site/head.html' %}
+	<nav>
+		<div class="container">
+			<ul class="navigation">
+				<li class="active-nav"><a href="/#services">Наши услуги</a></li>
+				<li class="a2"><a href="/#prices">Цены</a></li>
+				<li><a href="">Полезные статьи</a></li>
+				<li class="a3"><a href="/#replies">Отзывы</a></li>
+				<li><a href="/about">О компании</a></li>
+				<li><a href="/contacts">Контакты</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section class="services">
+		<div class="container">
+			<h2><b>Выберите</b> интересующую вас услугу</h2>
+			<div class="line"></div>
+			<div class="services-flex">
+                {% for img in imgs %}
+                <a href="{% url 'service1' serv.url_name img.service.url_name %}" class="services-item">
+					<div class="service-img"><img src="/{{ img.image.url }}"/></div>
+					<p>{{ img.service.name }}</p>
+                </a>
+                {% endfor %}
+            </div>
+		</div>
+	</section>
+	<section class="catch-form">
+		<div class="catch-form-bg"><img src="{% static 'img/catch-bg.png' %}" alt=""/></div>
+		<div class="container">
+			<h2><b>Остались вопросы?</b></h2>
+			<div class="line"></div>
+			<p class="description">Получите бесплатную развёрнутую консультацию специалиста</p>
+			<div class="catch-block clearfix">
+				<div class="catch-left">
+					<form action="{% url 'apply' %}" method="post">
+						<input type="text" name="name" placeholder="Введите имя" required="required"/>
+						<input type="text" name="phone" placeholder="Введите телефон" required="required"/>
+                        <input type="hidden" name="type" value="{{ serv.name }}">
+                        {% csrf_token %}
+						<textarea name="text" placeholder="Опишите вашу проблему"></textarea>
+						<button class="button">Заказать консультацию</button>
+					</form>
+				</div>
+				<div class="catch-right">
+					<h5>Вам ответит специалист <br>и проведет полную консультацию <br>по вашему вопросу  </h5>
+					<ul>
+						<li>Предоставит Вам оптимальный расчёт цены</li>
+						<li>Сориентирует по срокам</li>
+						<li>Раскажет как правильно сформировать пакет документов</li>
+						<li>Даст полное описание процесса</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+{% include 'site/footer.html' %}

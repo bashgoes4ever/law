@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>{% if serv.name %}{{ serv.name }}{% else %}Главная | Юридические услуги{% endif %}</title>
+    <meta name="keywords" content="{% if serv.meta_tags %}{{ serv.meta_tags }}{% else %}юридические услуги, владивосток, приморский край{% endif %}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="{% static 'libs/bootstrap/bootstrap-grid-3.3.1.min.css' %}"/>
+	<link href="{% static 'libs/owl-carousel/owl.carousel.css' %}" rel="stylesheet"/>
+	<link href="{% static 'libs/Swiper-4.0.6/dist/css/swiper.css' %}" rel="stylesheet"/>
+	<link href="{% static 'libs/jquery-nice-select-1.1.0/css/nice-select.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/fonts.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/normalize.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/media.css' %}" rel="stylesheet"/>
+</head>
+<body>
+	<header>
+		<div class="container">
+            <a href="/">
+                <img src="{% static 'img/logo.png' %}" class="logo"/>
+            </a>
+			<div class="address"><div class='h-img'><img src="{% static 'img/h1.png' %}" /></div> г. Владивосток.  Ул. Мира д.78 <br><div class='h-img'><img src="{% static 'img/h2.png' %}" /></div> info@moszem.com</div>
+			<button class="button call" data-type="Заявка на обратный звонок">Заказать звонок</button>
+			<div class="phone"><div class='h-img'><img src="{% static 'img/h3.png' %}" /></div> Работаем с 9:00 до 22:00 <br><div class='h-img'><img src="{% static 'img/h4.png' %}" /></div> +7 981 947 06 82</div>
+		</div>
+	</header>

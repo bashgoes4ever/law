@@ -1,0 +1,86 @@
+{% load static %}
+{% include 'site/head.html' %}
+	<nav>
+		<div class="container">
+			<ul class="navigation">
+				<li class="active-nav"><a href="/#services">Наши услуги</a></li>
+				<li class="a2"><a href="/#prices">Цены</a></li>
+				<li><a href="">Полезные статьи</a></li>
+				<li class="a3"><a href="/#replies">Отзывы</a></li>
+				<li><a href="/about">О компании</a></li>
+				<li><a href="/contacts">Контакты</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section class="inner-1">
+		<div class="container">
+			<h2>{{ serv.block1_header|safe }}</h2>
+			<div class="inner-1__flex">
+                {% for text in texts %}
+				<div class="inner-1__item">
+                    <span class="num">{{ forloop.counter }}</span>
+					<p>{{ text.text }}</p>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<section class="inner-2">
+		<div class="container">
+			<h2>{{ serv.block2_header|safe }}</h2>
+			<p>{{ serv.block2_text|safe }}</p>
+		</div>
+	</section>
+	<section class="inner-3 dark-bg">
+		<div class="inner-3-bg"><img src="{% static 'img/inner-3-bg.png' %}" alt=""/></div>
+		<div class="container">
+			<h2>{{ serv.block3_header|safe }}</h2>
+			<div class="line"></div>
+			<div class="inner-3__flex">
+                {% for document in documents %}
+				<div class="inner-3__item clearfix">
+                    <span>{{ forloop.counter }}</span>
+					<p>{{ document.text|safe }}</p>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<section class="inner-4">
+		<div class="container">
+			<h2><b>Цена</b> за данную услугу</h2>
+			<div class="line"></div>
+			<p class="price">от <b>{{ serv.price }}</b> руб.</p>
+			<button class="button inner-conv" data-type="{{ serv.name }}">Оставить заявку</button>
+			<p class="text">{{ serv.price_descriptor }}</p>
+		</div>
+	</section>
+	<section class="catch-form">
+		<div class="catch-form-bg"><img src="{% static 'img/catch-bg.png' %}" alt=""/></div>
+		<div class="container">
+			<h2><b>Остались вопросы?</b></h2>
+			<div class="line"></div>
+			<p class="description">Получите бесплатную развёрнутую консультацию специалиста</p>
+			<div class="catch-block clearfix">
+				<div class="catch-left">
+					<form>
+						<input type="text" name="name" placeholder="Введите имя" required="required"/>
+						<input type="text" name="phone" placeholder="Введите телефон" required="required"/>
+                        <input type="hidden" name="type" value="{{ serv.name }}">
+						<textarea name="text" placeholder="Опишите вашу проблему"></textarea>
+						<button class="button">Заказать консультацию</button>
+					</form>
+				</div>
+				<div class="catch-right">
+					<h5>Вам ответит специалист <br>и проведет полную консультацию <br>по вашему вопросу  </h5>
+					<ul>
+						<li>Предоставит Вам оптимальный расчёт цены</li>
+						<li>Сориентирует по срокам</li>
+						<li>Раскажет как правильно сформировать пакет документов</li>
+						<li>Даст полное описание процесса</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+{% include 'site/footer.html' %}

@@ -1,0 +1,173 @@
+{% load static %}
+{% include 'site/head.html' %}
+	<nav>
+		<div class="container">
+			<ul class="navigation">
+				<li class="active-nav a1"><a href="/#services">Наши услуги</a></li>
+				<li><a href="/#prices" class="a2">Цены</a></li>
+				<li><a href="">Полезные статьи</a></li>
+				<li><a href="/#replies" class="a3">Отзывы</a></li>
+				<li><a href="/about">О компании</a></li>
+				<li><a href="/contacts">Контакты</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section class="main">
+		<div class="main-bg"><img src="{% static 'img/main-bg.png' %}"/></div>
+		<div class="container">
+			<div class="main-left">
+				<h1>Компания <span>«СпецЮст»</span> занимается решением юридических вопросов связанных с  недвижимостью, гражданским и арбитражным судопроизводством</h1>
+				<ul>
+					<li>
+						<div class="main-left-img"><img src="{% static 'img/m1.png' %}" alt=""/></div><span>Регистрация недвижимости</span>
+					</li>
+					<li>
+						<div class="main-left-img"><img src="{% static 'img/m2.png' %}" alt=""/></div><span>Гражданское и арбитражное судопроизводство</span>
+					</li>
+					<li>
+						<div class="main-left-img"><img src="{% static 'img/m3.png' %}" alt=""/></div><span>Кадастровые работы и инженерные изыскания</span>
+					</li>
+					<li>
+						<div class="main-left-img"><img src="{% static 'img/m4.png' %}" alt=""/></div><span>Перевод земель</span>
+					</li>
+				</ul>
+			</div>
+			<div class="main-right">
+				<h5>Оставьте заявку на бесплатную консультацию</h5>
+				<form action="{% url 'apply' %}" method="post">{% csrf_token %}
+					<input type="text" name="name" placeholder="Введите имя" required="required"/>
+					<input type="text" name="phone" placeholder="Введите телефон" required="required"/>
+                    <input type="hidden" name="type" value="Заявка на обратный звонок">
+					<button class="button">Получить консультацию</button>
+				</form>
+				<p>В течение 10 минут с  вами свяжется наш специалист и предоставит развёрнутую консультацию </p>
+			</div>
+		</div>
+	</section>
+	<section class="services" id="services">
+		<div class="container">
+			<h2><b>Выберите</b> интересующую вас услугу</h2>
+			<div class="line"></div>
+			<div class="services-flex">
+                {% for service in services %}
+                <a href="{% url 'service' service.category.url_name %}" class="services-item">
+					<div class="service-img"><img src="{{ service.image.url }}"/></div>
+					<p>{{ service.category.name }}</p>
+                </a>
+                {% endfor %}
+            </div>
+		</div>
+	</section>
+	<section class="prices-main" id="prices">
+		<div class="container">
+			<h2><b>Стоимость</b> услуг</h2>
+			<div class="line"></div>
+			<p class="description">Обращаем  внимание что стоимость оформления рассчитывается в индивидуальном порядке.</p>
+			<div class="prices-main__block">
+                {% for price_head in prices %}
+				<div class="price-main__item">
+					<div class="price-main__head">
+						<h5>{{ price_head.title }}</h5>
+						<button class="button-price">Подробнее</button>
+					</div>
+					<div class="price-main__body">
+						<div class="line-body"></div>
+						<table>
+                            {% for price in price_head.prices_set.all %}
+							<tr>
+								<td>{{ price.subj }}</td>
+								<td>От <span>{{ price.price }} р.</span></td>
+							</tr>
+                            {% endfor %}
+						</table>
+					</div>
+				</div>
+                {% endfor %}
+            </div>
+		</div>
+	</section>
+	<section class="advances dark-bg">
+		<div class="advances-bg"><img src="{% static 'img/adv-bg.png' %}" alt=""/></div>
+		<div class="container">
+			<h2>Выбирая нашу компанию вы получаете <b>ряд преимуществ</b></h2>
+			<div class="line"></div>
+			<div class="advances-block clearfix">
+				<div class="advances-left">
+					<div class="advances-item">
+						<h4><div class='advance-img'><img src="{% static 'img/a1.png' %}" /></div> <span>Снимаем с вас трудности и проблемы</span></h4>
+						<p>Не нужно тратить время, ждать в очередях и разбираться в юридических тонкостях. <br>Мы сделаем это за вас </p>
+					</div><img src="{% static 'img/adv.png' %}" alt="" class="adv-img"/>
+				</div>
+				<div class="advances-right-flex">
+					<div class="advances-item">
+						<h4><div class='advance-img'><img src="{% static 'img/a2.png' %}" /></div> <span>Гибкий формат рассчёта <br>и доступные цены</span></h4>
+						<p>Программа оптимизации цен и система обслуживания клиентов позволяет сэкономить деньги и время </p>
+					</div>
+					<div class="advances-item">
+						<h4><div class='advance-img'><img src="{% static 'img/a3.png' %}" /></div> <span>Компетентные специалисты</span></h4>
+						<p>У нас работают узкопрофильные специалисты, что дает максимальную эффективность </p>
+					</div>
+					<div class="advances-item">
+						<h4><div class='advance-img'><img src="{% static 'img/a4.png' %}" /></div> <span>Каждая сделка застрахована</span></h4>
+						<p>Мы несем юридическую и материальную ответственность за каждую заключенную нами сделку</p>
+					</div>
+					<div class="advances-item">
+						<h4><div class='advance-img'><img src="{% static 'img/a5.png' %}" /></div> <span>Более 5 лет на рынке</span></h4>
+						<p>Более 5 лет на рынке. Стабильное и успешное выполнение задач любой сложности</p>
+					</div>
+					<div class="advances-item">
+						<h4><div class='advance-img'><img src="{% static 'img/a6.png' %}" /></div> <span>Бесплатная консультация при обращении</span></h4>
+						<p>При первом звонке Вы получите первичное консультирование от специалиста, ориентирование по срокам, перечень необходимых документов и порядок ценообразования </p>
+					</div>
+					<div class="advances-item">
+						<h4><div class='advance-img'><img src="{% static 'img/a1.png' %}" /></div> <span>Работа с частными и юридическими лицами</span></h4>
+						<p>Предоставляем бесплатную развернутую консультацию каждому клиенту</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="faq">
+		<div class="container faq-top"><img src="{% static 'img/f.png' %}" alt=""/>
+			<h3><b>Ответы на вопросы</b> <br>наших клиентов</h3>
+			<p class="desc">Мы <b>собрали</b> для вас список <br>самых актуальных вопросов <br>и <b>ответили</b> на них</p>
+		</div>
+		<div class="container">
+			<div class="faq-slider owl-carousel">
+                {% for faq in faqs %}
+				<div class="faq-slide">
+					<div class="faq-head"><span class="faq-q"><img src="{% static 'img/question.png' %}" alt=""/></span>
+						<p>{{ faq.question }}</p>
+					</div>
+					<div class="faq-body">
+						<p>{{ faq.answer|safe }}</p>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+	<section class="replies" id="replies">
+		<div class="container">
+			<h2><b>Клиенты</b> о нас</h2>
+			<div class="line"></div>
+			<div class="replies-slider owl-carousel">
+                {% for reply in replies %}
+				<div class="replies-slide">
+					<div class="reply-top clearfix">
+						<h5>{{ reply.reply.name }}</h5>
+						<h6>{{ reply.reply.subj }}</h6>
+					</div>
+					<div class="reply-body clearfix">
+						<div class="reply-img"><img src="{{ reply.image.url }}" alt=""/></div>
+						<div class="reply-right">
+							<p>{{ reply.reply.text|safe }}</p>
+							<button class="button" data-video="{{ forloop.counter0 }}">Смотреть видео отзыв</button>
+						</div>
+					</div>
+				</div>
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+{% include 'site/footer.html' %}

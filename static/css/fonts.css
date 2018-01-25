@@ -1,0 +1,28 @@
+@font-face{
+	font-family: 'Open Sans', sans-serif;
+	src: url('../fonts/OSBold.ttf');
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face{
+	font-family: 'Open Sans', sans-serif;
+	src: url('../fonts/OSLight.ttf');
+	font-style: normal;
+	font-weight: 300;
+}
+
+@font-face{
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Regular.ttf');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face{
+	font-family: 'Roboto';
+	src: url('../fonts/Roboto-Bold.ttf');
+	font-style: normal;
+	font-weight: bold;
+}
+

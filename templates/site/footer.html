@@ -1,0 +1,50 @@
+{% load static %}
+<footer>
+		<div class="footer-bg"><img src="{% static 'img/footer-bg.png' %}" alt=""/></div>
+		<div class="container">
+			<ul class="menu-1">
+                {% for service in services %}
+				<li><a href="{% url 'service' service.category.url_name %}">{{ service.category.name }}</a></li>
+                {% endfor %}
+			</ul>
+{#			<ul class="menu-2">#}
+{#				<li><a href="">Жилая застройка</a></li>#}
+{#				<li><a href="">Объекты торговли</a></li>#}
+{#				<li><a href="">Административные объекты</a></li>#}
+{#				<li><a href="">Объекты рекреации</a></li>#}
+{#				<li><a href="">Складские и промышленые </a></li>#}
+{#				<li><a href="">Автотранспортные предприятия</a></li>#}
+{#			</ul>#}
+			<div class="footer-form"><img src="{% static 'img/logo.png' %}" alt=""/>
+				<p>Есть вопросы? Звоните <br><b>+7 981 914 42 34</b></p>
+				<button class="button shadow-button call" data-type="Заявка на обратный звонок">Заказать звонок</button>
+				<div class="footer-flex"><a href=""><img src="{% static 'img/vk.png' %}" alt=""/></a><a href=""><img src="{% static 'img/twitter.png' %}" alt=""/></a><a href=""><img src="{% static 'img/fb.png' %}" alt=""/></a></div>
+			</div>
+		</div>
+	</footer>
+	<div class="politics">
+		<div class="container"><a href="">МОСЗЕМКОМ - Владивосток и Приморский край</a><a href="">Политика конфиденциальности</a></div>
+	</div>
+	<div class="layer">
+		<div class="callback popup"><img src="{% static 'img/close.png' %}" class="close"/>
+			<h6>Оставьте свои данные</h6>
+			<form action="{% url 'apply' %}" method="post">{% csrf_token %}
+				<input type="text" name="name" placeholder="Ваше имя" required="required"/>
+				<input type="text" name="phone" placeholder="Ваш телефон" required="required"/>
+                <input type="hidden" name="type" value="Заявка на обратный звонок">
+				<button class="button">Отправить</button>
+			</form>
+			<p>В течение 10 минут с вами свяжется наш специалист и предоставит развёрнутую консультацию</p>
+		</div>
+        <div class="thank">
+            <p>Спасибо за сотрудничество!</p>
+            <p>Мы свяжемся с вами в ближайшее время.</p>
+        </div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="{% static 'libs/owl-carousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'libs/Swiper-4.0.6/dist/js/swiper.min.js' %}"></script>
+	<script src="{% static 'libs/jquery-nice-select-1.1.0/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'js/mask.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
